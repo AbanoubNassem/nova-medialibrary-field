@@ -43,7 +43,7 @@ export default {
         width: { type: String, required: false },
         height: { type: String, required: false },
         loading: Boolean,
-        showActions: Boolean,
+        showActions: true,
     },
 
     computed: {

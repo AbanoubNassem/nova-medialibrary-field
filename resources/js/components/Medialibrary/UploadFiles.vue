@@ -7,18 +7,19 @@
                     :width="field.thumbnailWidth"
                     :height="field.thumbnailHeight"
                     :loading="file.loading"
-                    :show-actions="true"
+                    :show-actions="false"
                     @delete="deleteFile(file)"
                     @crop="openCropModal(file)"
                 />
             </div>
         </div>
 
-        <div class="mt-4">
+        <div class="mt-4" :class="{ 'opacity-75': isReadonly }">
             <input v-if="showFileInput" :id="'fileInput' + _uid" name="name" type="file" class="form-file-input"
                 :multiple="field.multiple"
                 :accept="field.accept"
                 @change="handleFileChange"
+                :disabled="isReadonly"
             >
 
             <label :for="'fileInput' + _uid" class="form-file form-file-btn btn btn-default btn-primary">
@@ -53,6 +54,7 @@ export default {
 
     props: {
         field: Object,
+        isReadonly: false
     },
 
     components: {

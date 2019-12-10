@@ -1,6 +1,6 @@
 <template>
     <panel-item :field="field" class="medialibrary-detail-field">
-        <Medialibrary slot="value" :field="field"/>
+        <Medialibrary slot="value" :field="field" :isReadonly="isReadonly"/>
     </panel-item>
 </template>
 
@@ -13,6 +13,6 @@
 
         props: ['resource', 'resourceName', 'resourceId', 'field'],
 
-        components: { Medialibrary }
+        components: { Medialibrary },
     }
 </script>

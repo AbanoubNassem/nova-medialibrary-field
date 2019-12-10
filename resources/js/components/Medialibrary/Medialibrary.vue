@@ -8,7 +8,7 @@
                     :width="field.thumbnailWidth"
                     :height="field.thumbnailHeight"
                     :loading="loadingFileId === file.id"
-                    :show-actions="showActions"
+                    :show-actions="!isReadonly"
                     v-on="fileEvents"
                 />
             </Resource>
@@ -17,7 +17,7 @@
         <div v-if="files.length" class="border-b border-40 my-4"></div>
         <div v-else class="my-2"></div>
 
-        <UploadFiles :field="field"/>
+        <UploadFiles v-if="!isReadonly" :field="field" :isReadonly="isReadonly"/>
     </div>
 </template>
 
@@ -40,6 +40,7 @@ export default {
 
     props: {
         field: Object,
+        isReadonly: false
     },
 
     computed: {
@@ -48,6 +49,6 @@ export default {
 
             return this.field.multiple ? files : files.slice(-1)
         }
-    }
+    },
 }
 </script>
